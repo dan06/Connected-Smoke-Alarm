@@ -250,9 +250,6 @@ private Map getTemperatureResult(value) {
 private Map getContactResult(value) {
 	log.debug 'Contact Status'
     
-private Map getContactResult(value) {
-    log.debug 'Contact Status'
-    
     def val=""
     def descriptionText=""
     if (value == "open") 
