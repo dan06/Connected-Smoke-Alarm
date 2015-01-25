@@ -250,20 +250,26 @@ private Map getTemperatureResult(value) {
 private Map getContactResult(value) {
 	log.debug 'Contact Status'
     
+private Map getContactResult(value) {
+    log.debug 'Contact Status'
+    
+    def val=""
+    def descriptionText=""
     if (value == "open") 
     {
-		sendEvent( name : "smoke", value : "detected", descriptionText: "$device.displayName detected smoke", unit : "" )
-	} 
-    else if (value == "closed")
-    {
-    	sendEvent( name : "smoke", value : "clear", descriptionText: "$device.displayName smoke is cleared", unit : "" )
+    	val = "detected"
+        descriptionText = "$device.displayName detected smoke"
     }
-    
-	return [
-		name: 'contact',
-		value: value,
-		displayed: false
-	]
+    else if (value == "closed") 
+    {
+    	val = "clear"
+        descriptionText = "$device.displayName smoke is cleared"
+    }
+    return [
+		name: 'smoke',
+		value: val,
+		descriptionText: discriptionText
+    ]
 }
 
 def refresh()
