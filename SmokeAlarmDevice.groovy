@@ -11,6 +11,8 @@
  *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
+ * 
+ * 09/28/2015 - Changed the icons and main tile to better reflect real-time state in device page.
  *
  */
  
@@ -39,9 +41,9 @@ metadata {
 	}
  
 	tiles {
-    	standardTile("smoke", "device.alarmState", width: 2, height: 2) {
-            state("clear", label:'Clear', icon:"st.Home.home2", backgroundColor:"#79b821")
-			state("detected", label:'Smoke', icon:"st.particulate.particulate.particulate", backgroundColor:"#e86d13")
+    	standardTile("smoke", "device.smoke", width: 2, height: 2) {
+            state("clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#79b821")
+			state("detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13")
 		}
     	
 		valueTile("temperature", "device.temperature", inactiveLabel: false) {
