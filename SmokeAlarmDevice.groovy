@@ -43,7 +43,7 @@ metadata {
 	tiles {
     	standardTile("smoke", "device.smoke", width: 2, height: 2) {
             state("clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#79b821")
-			state("detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#e86d13")
+			state("detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#ff1f1f")
 		}
     	
 		valueTile("temperature", "device.temperature", inactiveLabel: false) {
