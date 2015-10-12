@@ -19,15 +19,14 @@
 metadata {
 	definition (name: "Connected Smoke Alarm", namespace: "smartthings", author: "SmartThings") {
     	capability "Battery"
-		capability "Configuration"
-        //capability "Contact Sensor"
-		capability "Refresh"
-		capability "Temperature Measurement"
+	capability "Configuration"
+	capability "Refresh"
+	capability "Temperature Measurement"
         capability "Smoke Detector"
         
         command "enrollResponse"
  
-		fingerprint inClusters: "0000,0001,0003,0402,0500,0020,0B05", outClusters: "0019", manufacturer: "CentraLite", model: "3300-S"
+	fingerprint inClusters: "0000,0001,0003,0402,0500,0020,0B05", outClusters: "0019", manufacturer: "CentraLite", model: "3300-S"
         fingerprint inClusters: "0000,0001,0003,0402,0500,0020,0B05", outClusters: "0019", manufacturer: "CentraLite", model: "3300"
 	}
  
@@ -40,10 +39,12 @@ metadata {
 		input "tempOffset", "number", title: "Temperature Offset", description: "Adjust temperature by this many degrees", range: "*..*", displayDuringSetup: false
 	}
  
-	tiles {
-    	standardTile("smoke", "device.smoke", width: 2, height: 2) {
-            state("clear", label:'Clear', icon:"st.alarm.smoke.clear", backgroundColor:"#79b821")
-			state("detected", label:'Smoke', icon:"st.alarm.smoke.smoke", backgroundColor:"#ff1f1f")
+	tiles(scale: 2) {
+    		multiAttributeTile(name: "smoke", type: "lighting", width: 6, height: 4) {
+        		tileAttribute ("device.smoke", key: "PRIMARY_CONTROL") {
+				attributeState "clear", label:'${name}', icon:"st.alarm.smoke.clear", backgroundColor:"#79b821"
+				attributeState "detected", label:'${name}', icon:"st.alarm.smoke.smoke", backgroundColor:"#ff1f1f"
+			}
 		}
     	
 		valueTile("temperature", "device.temperature", inactiveLabel: false) {
@@ -62,11 +63,11 @@ metadata {
 			state "battery", label:'${currentValue}% battery', unit:""
 		}
         
-        standardTile("refresh", "device.refresh", inactiveLabel: false, decoration: "flat") {
+        	standardTile("refresh", "device.refresh", inactiveLabel: false, decoration: "flat") {
 			state "default", action:"refresh.refresh", icon:"st.secondary.refresh"
 		}
  
-        main (["smoke", "temperature"])
+        	main "smoke
 		details(["smoke","temperature","battery","refresh"])
 	}
 }
