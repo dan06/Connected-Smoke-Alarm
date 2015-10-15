@@ -67,7 +67,7 @@ metadata {
 			state "default", action:"refresh.refresh", icon:"st.secondary.refresh"
 		}
  
-        	main "smoke
+        	main "smoke"
 		details(["smoke","temperature","battery","refresh"])
 	}
 }
